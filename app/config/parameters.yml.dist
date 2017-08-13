@@ -25,3 +25,5 @@ parameters:
 
     # Needed when app is behind a reverse proxy
     trusted_proxies: ~
+
+    router.request_context.host: ~

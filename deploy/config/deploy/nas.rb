@@ -4,7 +4,7 @@ server "nas",
   port: 22
 
 set :branch, "master"
-set :deploy_to, "/VINCE/server/www/fabrics.lanaria"
+set :deploy_to, "/VINCE/server/www/fabrics"
 
 namespace :phpfpm do
     desc "Restart PHP-FPM on remote server"
