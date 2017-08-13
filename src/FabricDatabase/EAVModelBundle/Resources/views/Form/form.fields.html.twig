@@ -1,0 +1,46 @@
+{% block color_picker_widget %}
+    {% spaceless %}
+        {% set tagName = 'label' %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class|default(''))}) %}
+        {% set label_attr = label_attr|merge({'class': (label_attr.class ~ ' ' ~ (widget_type != '' ? (multiple ? 'checkbox' : 'radio') ~ '-' ~ widget_type : ''))}) %}
+        {% if expanded %}
+            {% set attr = attr|merge({'class': attr.class|default('') ~ ' ' ~ horizontal_input_wrapper_class}) %}
+        {% endif %}
+        {% if widget_type == 'inline-btn' %}
+            {% set tagName = 'button' %}
+            <div class="btn-group" data-toggle="buttons">
+        {% endif %}
+        {% for child in form %}
+            {% if widget_type not in ['inline', 'inline-btn'] %}
+                <div class="{{ multiple ? 'checkbox' : 'radio' }} {{ custom_classes }}"
+                {%- if widget_type == 'inline-btn' %} class="btn-group" data-toggle="buttons"{% endif %}>
+            {% endif %}
+            {% if widget_type == 'inline-btn' %}
+                {% set label_attr = label_attr|default({})|merge({'class': 'btn ' ~ label_attr.class|default('')}) %}
+            {% endif %}
+            {% if child.vars.checked and widget_type == 'inline-btn' %}
+                {% set label_attr_copy = label_attr|default({})|merge({'class': 'active ' ~ label_attr.class|default('')}) %}
+            {% else %}
+                {% set label_attr_copy = label_attr|default({}) %}
+            {% endif %}
+            <{{ tagName }}{% for attrname, attrvalue in label_attr_copy %} {{ attrname }}="{{ attrvalue }}"{% endfor %}
+            {%- if disabled %} disabled="disabled"{% endif -%}>
+            {% spaceless %}
+                {{ form_widget(child, {'horizontal_label_class': horizontal_label_class, 'horizontal_input_wrapper_class': horizontal_input_wrapper_class, 'attr': {'class': attr.widget_class|default('') }}) }}
+                <span class="fa fa-circle" style="color:{{ '#' ~ child.vars.value }};text-shadow:0 0 2px grey;"></span>&nbsp;
+                {%- if widget_type == 'inline-btn' or widget_checkbox_label == 'widget' -%}
+                    {{ child.vars.label|trans({}, translation_domain)|raw }}
+                {%- else -%}
+                    {{ child.vars.label|trans({}, translation_domain) }}
+                {%- endif -%}
+                </{{ tagName }}>
+            {% endspaceless %}
+            {% if widget_type not in ['inline', 'inline-btn'] %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% if widget_type == 'inline-btn' %}
+            </div>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

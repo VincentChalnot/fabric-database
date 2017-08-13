@@ -1,0 +1,7 @@
+services:
+    fabric_database.form.type.color_picker:
+        class: FabricDatabase\EAVModelBundle\Form\Type\ColorPickerType
+        arguments:
+            - '%color.choices%'
+        tags:
+            - { name: form.type }

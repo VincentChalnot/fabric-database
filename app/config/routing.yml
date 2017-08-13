@@ -1,0 +1,3 @@
+eavmanager_admin:
+    resource: '@CleverAgeEAVManagerAdminBundle/Resources/config/routing.yml'
+    prefix: /

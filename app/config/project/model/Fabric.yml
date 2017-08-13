@@ -1,0 +1,104 @@
+sidus_eav_model:
+    families:
+        Fabric:
+            attributes:
+                image:
+                    type: image
+                    group: main
+
+                colorName:
+                    group: main
+                    required: true
+
+                colors:
+                    type: choice
+                    group: main
+                    required: true
+                    collection: true
+                    form_type: FabricDatabase\EAVModelBundle\Form\Type\ColorPickerType
+
+                pattern:
+                    type: autocomplete_data_selector
+                    group: main
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - Pattern
+
+                materials:
+                    type: autocomplete_data_selector
+                    group: main
+                    multiple: true
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - Material
+
+                properties:
+                    type: autocomplete_data_selector
+                    group: main
+                    multiple: true
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - Property
+
+                fabricType:
+                    type: autocomplete_data_selector
+                    group: main
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - FabricType
+
+                yardages:
+                    type: embed
+                    group: main
+                    multiple: true
+                    options:
+                        allowed_families:
+                            - Yardage
+
+                comments:
+                    type: html
+                    group: options
+
+                decatized:
+                    type: switch
+                    group: options
+
+                merchant:
+                    type: autocomplete_data_selector
+                    group: options
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - Merchant
+
+                price:
+                    type: decimal
+                    group: options
+
+                exhausted:
+                    type: switch
+                    group: options
+
+                storage:
+                    type: autocomplete_data_selector
+                    group: options
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - Storage

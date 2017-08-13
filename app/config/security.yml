@@ -1,0 +1,2 @@
+imports:
+    - { resource: '@CleverAgeEAVManagerUserBundle/Resources/config/default/security.yml' }

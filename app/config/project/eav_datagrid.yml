@@ -1,0 +1,56 @@
+sidus_eav_data_grid:
+    configurations:
+        base:
+            family: Property
+            filter_config:
+                sortable:
+                    - id
+                    - createdAt
+                    - updatedAt
+                fields: []
+            columns:
+                id:
+                    label: '#'
+                label:
+                    template: '%clickable.template%'
+                createdAt: ~
+                updatedAt: ~
+                actions:
+                    template: '%eav_datagrid.actions%'
+            actions:
+                create: '%create.button%'
+            reset_button:
+                attr:
+                    data-target: tg_center
+
+        # Configuration Example
+        fabric:
+            family: Fabric
+            parent: base
+            filter_config:
+                sortable:
+                    - colorName
+                fields:
+                    colorName: ~
+                    pattern:
+                        type: autocomplete_data
+                    materials:
+                        type: autocomplete_data
+                    colors:
+                        type: choice
+                        form_type: FabricDatabase\EAVModelBundle\Form\Type\ColorPickerType
+                        form_options:
+                            choices: '%color.choices%'
+                            custom_classes: col-lg-4 col-md-6 col-xs-12
+            columns:
+                image:
+                    template: CleverAgeEAVManagerAdminBundle:Asset:partials/browse.thumbnail.html.twig
+                colorName:
+                    template: '%clickable.template%'
+                colors:
+                    template: FabricDatabaseEAVModelBundle:Fabric/partials:datagrid.colors.html.twig
+                pattern: ~
+                materials: ~
+                yardages: ~
+                actions:
+                    template: '%eav_datagrid.actions%'

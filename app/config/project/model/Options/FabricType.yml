@@ -1,0 +1,10 @@
+sidus_eav_model:
+    families:
+        FabricType:
+            attributeAsLabel: label
+#            attributeAsIdentifier: code
+            attributes:
+#                code:
+#                    type: string_identifier
+                label:
+                    required: true

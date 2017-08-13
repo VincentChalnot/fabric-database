@@ -1,0 +1,19 @@
+sidus_eav_model:
+    families:
+        Yardage:
+            attributeAsLabel: sizeClass
+            attributes:
+                sizeClass:
+                    type: autocomplete_data_selector
+                    group: main
+                    required: true
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    options:
+                        allowed_families:
+                            - SizeClass
+                width:
+                    type: decimal
+                length:
+                    type: decimal

@@ -1,0 +1,7 @@
+services:
+    fabric_database.twig.color.extension:
+        class: FabricDatabase\EAVModelBundle\Twig\ColorExtension
+        arguments:
+            - '%color.choices%'
+        tags:
+            - { name: twig.extension }

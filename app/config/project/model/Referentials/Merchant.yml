@@ -1,0 +1,10 @@
+sidus_eav_model:
+    families:
+        Merchant:
+            attributeAsLabel: label
+            attributes:
+                label:
+                    required: true
+                website:
+                    validation_rules:
+                        - Url: ~

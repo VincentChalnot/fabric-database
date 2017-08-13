@@ -1,0 +1,3 @@
+{% for color in result.get(column.code) %}
+    <span class="fa fa-circle" style="color:{{ '#' ~ color }};text-shadow:0 0 2px grey;"></span>&nbsp;{{ color_name(color) }}<br>
+{% endfor %}
