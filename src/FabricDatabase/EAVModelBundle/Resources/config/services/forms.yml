@@ -1,6 +1,6 @@
 services:
-    fabric_database.form.type.color_picker:
-        class: FabricDatabase\EAVModelBundle\Form\Type\ColorPickerType
+    FabricDatabase\EAVModelBundle\Form\Type\ColorPickerType:
+        public: fase
         arguments:
             - '%color.choices%'
         tags:

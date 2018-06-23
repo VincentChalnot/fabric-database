@@ -1,10 +1,10 @@
-server "nas",
+server "new.sidus.fr",
   roles: [:web, :app, :db],
   user: "vincent",
   port: 22
 
 set :branch, "master"
-set :deploy_to, "/home/media/www/fabrics"
+set :deploy_to, "/mnt/external/www/database.lanaria/"
 
 namespace :phpfpm do
     desc "Restart PHP-FPM on remote server"

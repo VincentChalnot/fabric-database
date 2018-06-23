@@ -7,7 +7,7 @@ append :linked_dirs, "var/data", "var/logs", "var/sessions", "web/images/cache"
 
 # set :default_env, { path: "~/.composer/vendor/bin:$PATH" }
 
-set :keep_releases, 4
+set :keep_releases, 3
 
 set :symfony_console_flags, "--no-debug --env=prod"
 

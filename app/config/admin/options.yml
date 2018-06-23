@@ -1,26 +1,5 @@
 sidus_admin:
     configurations:
-        fabric:
-            controller: '%eav.controller%'
-            entity: '%sidus_data_class%'
-            prefix: /fabric
-            actions:
-                index:
-                    path:     /
-                list:
-                    path:     /{familyCode}/list
-                create:
-                    path:     /{familyCode}/create
-                    form_type: '%eav_form.type%'
-                edit:
-                    path:     /{familyCode}/{id}/edit
-                    form_type: '%eav_form.type%'
-                delete:
-                    path:     /{familyCode}/{id}/delete
-            options:
-                families:
-                    Fabric: ~
-
         options:
             controller: '%eav.controller%'
             entity: '%sidus_data_class%'

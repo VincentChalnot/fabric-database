@@ -1,0 +1,26 @@
+sidus_data_grid:
+    configurations:
+        yardage:
+            query_handler:
+                provider: sidus.eav
+                options:
+                    family: Yardage
+                sortable:
+                    - id
+                    - createdAt
+                    - updatedAt
+                filters: []
+            columns:
+                id:
+                    label: '#'
+                label:
+                    template: '%clickable.template%'
+                createdAt: ~
+                updatedAt: ~
+                actions:
+                    template: '%eav_datagrid.actions%'
+            actions:
+                create: '%create.button%'
+            reset_button:
+                attr:
+                    data-target: tg_center

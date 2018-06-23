@@ -1,6 +1,6 @@
 services:
-    fabric_database.twig.color.extension:
-        class: FabricDatabase\EAVModelBundle\Twig\ColorExtension
+    FabricDatabase\EAVModelBundle\Twig\ColorExtension:
+        public: false
         arguments:
             - '%color.choices%'
         tags:

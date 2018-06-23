@@ -18,13 +18,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            // Not part of the standard distribution anymore:
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         ];
 
         $eavBundles = CleverAge\EAVManager\EAVKernelBundleLoader::getBundles();
 
         $projectBundles = [
+            new Sidus\DatabaseMaintenanceBundle\SidusDatabaseMaintenanceBundle(),
+
             new FabricDatabase\EAVModelBundle\FabricDatabaseEAVModelBundle(),
         ];
 
@@ -35,6 +35,7 @@ class AppKernel extends Kernel
                 new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle(),
                 new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
                 new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
+                new Sidus\DoctrineDebugBundle\SidusDoctrineDebugBundle(),
             ];
         }
 

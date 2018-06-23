@@ -1,6 +1,6 @@
 {
-    "name": "cleverage/eav-manager-starter-kit",
-    "license": "GPL-3.0",
+    "name": "sidus/fabric-database",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -16,39 +16,78 @@
         }
     },
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.2",
         "ext-intl": "*",
+        "ext-iconv": "*",
 
-        "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/orm": "^2.5",
-        "incenteev/composer-parameter-handler": "^2.0",
-        "sensio/distribution-bundle": "^5.0.19",
-        "sensio/framework-extra-bundle": "^3.0.2",
-        "symfony/monolog-bundle": "^3.1.0",
-        "symfony/polyfill-apcu": "^1.0",
-        "symfony/swiftmailer-bundle": "^2.3.10",
-        "symfony/symfony": "3.3.*",
-        "twig/twig": "^1.0||^2.0",
+        "symfony/symfony": "3.4.*",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/monolog-bundle": "^3.2",
+        "symfony/swiftmailer-bundle": "^3.1",
+        "doctrine/doctrine-bundle": "^1.9",
+        "doctrine/orm": "^2.6",
+        "incenteev/composer-parameter-handler": "^2.1",
+        "sensio/distribution-bundle": "^5.0.21",
 
-        "cleverage/eav-manager": "1.2.*",
+        "tinymce/tinymce": "4.7.*",
+        "sidus/database-maintenance-bundle": "1.0.*",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "smalot/bootstrap-datetimepicker": "^2.4",
 
-        "symfony/assetic-bundle": "^2.8"
+        "cleverage/eav-manager": "dev-v1.3-dev",
+        "sidus/eav-model-bundle": "dev-v1.2-dev",
+        "sidus/eav-bootstrap-bundle": "dev-v1.2-dev",
+        "sidus/filter-bundle": "dev-v1.3-dev",
+        "sidus/eav-filter-bundle": "dev-v1.3-dev",
+        "sidus/datagrid-bundle": "dev-v1.3-dev",
+        "sidus/file-upload-bundle": "dev-v1.2.x-dev",
+        "sidus/admin-bundle": "dev-v1.3-dev",
+        "cleverage/process-bundle": "dev-v1.1-dev"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-master",
         "sensio/generator-bundle": "^3.0",
+        "sidus/doctrine-debug-bundle": "1.0.*",
         "symfony/phpunit-bridge": "^3.0"
     },
+    "replace": {
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "smalot/bootstrap-datetimepicker",
+                "version": "2.4.4",
+                "dist": {
+                    "url": "https://github.com/smalot/bootstrap-datetimepicker/archive/2.4.4.zip",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "https://github.com/smalot/bootstrap-datetimepicker.git",
+                    "type": "git",
+                    "reference": "tags/2.4.4"
+                }
+            }
+        }
+    ],
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "cp -r vendor/tinymce/tinymce vendor/stfalcon/tinymce-bundle/Stfalcon/Bundle/TinymceBundle/Resources/public/vendor",
+            "cp -r vendor/smalot/bootstrap-datetimepicker/* vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/public/components/smalot-bootstrap-datetimepicker",
             "Sidus\\FileUploadBundle\\Composer\\ScriptHandler::symlinkJQueryFileUpload",
             "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrapSass",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "php bin/console assetic:dump"
+            "bin/console --env=prod doctrine:migrations:migrate --no-interaction"
         ],
         "post-install-cmd": [
             "@symfony-scripts"
@@ -63,7 +102,8 @@
         "preferred-install": {
             "cleverage/*": "source",
             "sidus/*": "source"
-        }
+        },
+        "sort-packages": true
     },
     "extra": {
         "symfony-app-dir": "app",
@@ -71,17 +111,22 @@
         "symfony-var-dir": "var",
         "symfony-web-dir": "web",
         "symfony-tests-dir": "tests",
-        "symfony-assets-install": "symlink",
+        "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
+            "keep-outdated": true,
             "env-map": {
-                "database_host": "DATABASE_HOST",
-                "database_port": "DATABASE_PORT",
-                "database_name": "DATABASE_NAME",
-                "database_user": "DATABASE_USER",
-                "database_password": "DATABASE_PASSWORD"
+                "database_host": "SF_DATABASE_HOST",
+                "database_port": "SF_DATABASE_PORT",
+                "database_name": "SF_DATABASE_NAME",
+                "database_user": "SF_DATABASE_USER",
+                "database_password": "SF_DATABASE_PASSWORD",
+                "mailer_transport": "SF_MAILER_TRANSPORT",
+                "mailer_host": "SF_MAILER_HOST",
+                "mailer_user": "SF_MAILER_USER",
+                "mailer_password": "SF_MAILER_PASSWORD",
+                "secret": "SF_SECRET"
             }
-        },
-        "branch-alias": null
+        }
     }
 }

@@ -11,27 +11,30 @@
 !/var/sessions
 /var/sessions/*
 !var/sessions/.gitkeep
-!/var/annotations
-/var/annotations/*
-!var/annotations/.gitkeep
+!/var/data
+/var/data/*
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
 
 .idea/
-/.sass-cache/
 /web/assets/
 /web/css/
 /web/js/
 /web/images/cache/
 
-/deploy/.bundle
-/deploy/log/*
-
-/app/data/*
-!/app/data/.gitkeep
+/backups/*
 
 /deploy/.bundle
 /deploy/log/*
+
+!/docker/data
+/docker/data/*
+!docker/data/.gitkeep
+!/docker/ssh
+/docker/ssh/*
+!docker/ssh/.gitkeep
+/docker/.env
+/docker/www/zsh_history
 
 !.gitkeep

@@ -1,0 +1,15 @@
+parameters:
+    color.choices:
+        Blanc: 'ffffff'
+        Jaune: 'ffd700'
+        Orange: 'd2691e'
+        Rose: 'ff69b4'
+        Rouge: 'dc143c'
+        Vert: '008000'
+        Bleu: '0000cd'
+        Cyan: '66ccff'
+        Violet: '4b0082'
+        Marron: '8b4513'
+        Gris: '808080'
+        Beige: 'd2b48c'
+        Noir: '000000'

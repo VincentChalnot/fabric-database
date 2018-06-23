@@ -1,0 +1,5 @@
+imports:
+    - { resource: Admin/* }
+    - { resource: Options/* }
+    - { resource: Product/* }
+    - { resource: Referentials/* }
