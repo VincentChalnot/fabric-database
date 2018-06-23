@@ -1,4 +1,4 @@
-server "new.sidus.fr",
+server "54.36.189.137",
   roles: [:web, :app, :db],
   user: "vincent",
   port: 22
