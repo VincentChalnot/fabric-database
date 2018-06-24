@@ -1,3 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'capistrano-symfony', '~> 1.0.0.rc2'
