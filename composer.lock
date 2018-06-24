@@ -62,12 +62,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleverage/eav-manager.git",
-                "reference": "9bc48496348ca0a96f5ec6ab09cba0cbeadb6257"
+                "reference": "4a8b001eff18bdee407d9eec2b009ec0d576ef25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/9bc48496348ca0a96f5ec6ab09cba0cbeadb6257",
-                "reference": "9bc48496348ca0a96f5ec6ab09cba0cbeadb6257",
+                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/4a8b001eff18bdee407d9eec2b009ec0d576ef25",
+                "reference": "4a8b001eff18bdee407d9eec2b009ec0d576ef25",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "manager",
                 "model"
             ],
-            "time": "2018-05-25T15:10:39+00:00"
+            "time": "2018-06-24T14:27:55+00:00"
         },
         {
             "name": "cleverage/process-bundle",
