@@ -1,0 +1,31 @@
+liip_imagine:
+    filter_sets:
+        tiny:
+            data_loader: images
+            quality: 70
+            filters:
+                auto_rotate: ~
+                thumbnail: { size: [128, 128], mode: outbound }
+        thumbnail:
+            data_loader: images
+            quality: 70
+            filters:
+                auto_rotate: ~
+                thumbnail: { size: [200, 200], mode: outbound }
+        small:
+            data_loader: images
+            quality: 75
+            filters:
+                thumbnail: { size: [400, 300], mode: outbound }
+        preview:
+            data_loader: images
+            quality: 80
+            filters:
+                auto_rotate: ~
+                thumbnail: { size: [730, 730], mode: inset }
+        large:
+            data_loader: images
+            quality: 90
+            filters:
+                auto_rotate: ~
+                thumbnail: { size: [1900, 1000], mode: inset }

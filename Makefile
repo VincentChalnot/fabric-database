@@ -39,20 +39,28 @@ deploy-production: ## Deploy to production
 	$(DC) run deploy cap prod deploy
 
 CURRENT_DATE := $(shell date +"%Y-%m-%d")
-remoteHost ?= fabric-prod
+remoteHost ?= vincent@54.36.189.137
 outputFile := fabric-$(CURRENT_DATE).sql.gz
-remotePath := /home/www/fabrics/www_prod/shared/var/data/export/$(outputFile)
-dumpCmd := /home/www/fabrics/www_prod/current/bin/console --env=prod sidus:database:mysqldump | gzip -c > "$(remotePath)"
+remoteBasePath ?= /mnt/external/www/database.lanaria/current
+remotePath := $(remoteBasePath)/var/data/$(outputFile)
+dumpCmd := php $(remoteBasePath)/bin/console --env=prod sidus:database:mysqldump | gzip -c > "$(remotePath)"
 
 .PHONY: fetch-prod-database
-fetch-prod-database: start ## Fetch production database locally
-	echo "Dumping remote database to $(remotePath)"
+fetch-prod-database: start backups ## Fetch production database locally
+	@echo "Dumping remote database to $(remotePath)"
 	ssh $(remoteHost) "$(dumpCmd)"
 
-	echo "Copying dump file to local path backups/$(outputFile)"
+	@echo "Copying dump file to local path backups/$(outputFile)"
 	scp -C $(remoteHost):"$(remotePath)" "backups/$(outputFile)"
 
 .PHONY: load-prod-database
 load-prod-database: start ## Load the production database locally
-	echo "Loading production database from backups/$(outputFile)"
-	$(DCE) sh -c "pv backups/$(outputFile) | zcat | bin/console sidus:database:mysql"
+	@echo "Loading production database from backups/$(outputFile)"
+	$(DCE) sh -c "pv backups/$(outputFile) | zcat | php bin/console sidus:database:mysql"
+
+backups:
+	mkdir backups
+
+.PHONY: fetch-assets
+fetch-assets:
+	rsync -r -t -p -x -v --progress --ignore-existing --partial -s $(remoteHost):$(remoteBasePath)/var/data/resources/ var/data/resources

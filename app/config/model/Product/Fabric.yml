@@ -5,6 +5,8 @@ sidus_eav_model:
                 image:
                     type: image
                     group: main
+                    form_options:
+                        horizontal_input_wrapper_class: col-lg-12
 
                 colorName:
                     group: main
