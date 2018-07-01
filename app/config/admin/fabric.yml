@@ -5,18 +5,19 @@ sidus_admin:
             entity: '%sidus_data_class%'
             prefix: /fabric
             actions:
-                index:
-                    path:     /
                 list:
                     path:     /{familyCode}/list
                 create:
                     path:     /{familyCode}/create
                     form_type: '%eav_form.type%'
+                read:
+                    path:     /{familyCode}/read/{id}
+                    form_type: '%eav_form.type%'
                 edit:
-                    path:     /{familyCode}/{id}/edit
+                    path:     /{familyCode}/edit/{id}
                     form_type: '%eav_form.type%'
                 delete:
-                    path:     /{familyCode}/{id}/delete
+                    path:     /{familyCode}/delete/{id}
             options:
                 families:
                     Fabric: ~

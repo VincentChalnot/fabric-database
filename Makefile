@@ -20,7 +20,7 @@ start: docker/.env ## Start docker
 
 .PHONY: stop
 stop: ## Stop and destroy docker images
-	$(DC) down
+	$(DC) down --remove-orphans
 
 .PHONY: cc
 cc: ## Clear Symfony cache
