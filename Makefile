@@ -41,7 +41,7 @@ deploy-production: ## Deploy to production
 CURRENT_DATE := $(shell date +"%Y-%m-%d")
 remoteHost ?= vincent@54.36.189.137
 outputFile := fabric-$(CURRENT_DATE).sql.gz
-remoteBasePath ?= /mnt/external/www/database.lanaria/current
+remoteBasePath ?= /home/www-data/sites/database.lanaria/current
 remotePath := $(remoteBasePath)/var/data/$(outputFile)
 dumpCmd := php $(remoteBasePath)/bin/console --env=prod sidus:database:mysqldump | gzip -c > "$(remotePath)"
 

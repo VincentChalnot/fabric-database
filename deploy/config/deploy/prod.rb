@@ -1,10 +1,10 @@
-server "54.36.189.137",
+server "database.lanaria.me",
   roles: [:web, :app, :db],
   user: "vincent",
   port: 22
 
 set :branch, "master"
-set :deploy_to, "/mnt/external/www/database.lanaria/"
+set :deploy_to, "/home/www-data/sites/database.lanaria/"
 
 namespace :phpfpm do
     desc "Restart PHP-FPM on remote server"

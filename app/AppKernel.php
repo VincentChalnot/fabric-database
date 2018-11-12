@@ -23,6 +23,7 @@ class AppKernel extends Kernel
         $eavBundles = CleverAge\EAVManager\EAVKernelBundleLoader::getBundles();
 
         $projectBundles = [
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Sidus\DatabaseMaintenanceBundle\SidusDatabaseMaintenanceBundle(),
 
             new FabricDatabase\EAVModelBundle\FabricDatabaseEAVModelBundle(),

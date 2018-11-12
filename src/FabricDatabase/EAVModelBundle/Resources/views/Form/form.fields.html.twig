@@ -1,5 +1,6 @@
 {% block color_picker_widget %}
     {% spaceless %}
+        <div class="clear"></div>
         {% set tagName = 'label' %}
         {% set label_attr = label_attr|merge({'class': (label_attr.class|default(''))}) %}
         {% set label_attr = label_attr|merge({'class': (label_attr.class ~ ' ' ~ (widget_type != '' ? (multiple ? 'checkbox' : 'radio') ~ '-' ~ widget_type : ''))}) %}
@@ -42,5 +43,6 @@
         {% if widget_type == 'inline-btn' %}
             </div>
         {% endif %}
+        <div class="clear"></div>
     {% endspaceless %}
 {% endblock %}
